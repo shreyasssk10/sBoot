@@ -1,15 +1,10 @@
 pipeline {
   agent any
-     stages {
-        stage ('clean') {
-           steps {
-             cleanWS ()
-         }  
-       }     
+     stages {     
         stage ('build') {
           steps {
-            sh 'mvn clean install -DskipTests'
+            sh 'mvn clean package' 
           }  
         }
       } 
-    } 
+    }
