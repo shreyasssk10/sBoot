@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ssbootpod
+  name: ssbootpod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ssbootpod
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ssbootpod
+    spec:
+      containers:
+      - image: shreyassk10/ssboot:1.0
+        name: ssboot
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ssbootpod
+  name: ssbootpod
+spec:
+  ports:
+  - name: 8091-8091
+    port: 8091
+    protocol: TCP
+    targetPort: 8091
+  - name: 8090-8090
+    port: 8090
+    protocol: TCP
+    targetPOrt: 8090
+  selector:
+    app: ssbootpod
+  type: LoadBalancer
+status:
+  loadBalancer: {}
