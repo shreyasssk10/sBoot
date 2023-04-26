@@ -6,4 +6,4 @@ WORKDIR /sk/target .
 COPY spring-boot-rest-example-0.5.0.war /sk/target
 EXPOSE 8091
 EXPOSE 8090
-CMD java -jar -Dspring.profiles.active=test spring-boot-rest-example-0.5.0.war
+CMD java -jar -Dspring.profiles.active=test /target/spring-boot-rest-example-0.5.0.war
