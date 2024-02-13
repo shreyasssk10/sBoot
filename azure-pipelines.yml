@@ -4,16 +4,18 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- master
+  branches:
+    include:
+      - 'Main'
+
+pr:
+  branches:
+    include:
+      - 'feature'
 
 pool:
-  worker1
+  vmImage: 'ubuntu-latest'
 
 steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
-    
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
